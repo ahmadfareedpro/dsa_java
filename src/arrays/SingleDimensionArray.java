@@ -1,7 +1,7 @@
 package arrays;
 
 public class SingleDimensionArray {
-  int arr[] = null;
+  int[] arr = null;
 
   public SingleDimensionArray(int sizeOfArray) {
     arr = new int[sizeOfArray];
