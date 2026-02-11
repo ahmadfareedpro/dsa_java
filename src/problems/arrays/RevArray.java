@@ -25,5 +25,4 @@ public class RevArray {
         }
         return i + 1;
     }
-    }
 }
