@@ -2,16 +2,6 @@ package linkedList;
 
 public class LinkedListBasics {
 
-    public static class Node {
-        int value;
-        Node next;
-
-        Node(int value) {
-            this.value = value;
-            this.next = null;
-        }
-    }
-
     public static void main(String[] args) {
         Node head = new Node(10);
         Node second = new Node(20);
@@ -21,72 +11,16 @@ public class LinkedListBasics {
         second.next = third;
 
         var node = head;
-        while(node != null) {
-        System.out.println(node.value);
-        node = node.next;
+        while (node != null) {
+            System.out.println(node.value);
+            node = node.next;
         }
 
-        var newHead = revLinkedList(head);
+        Node newHead = RevLinkedList.revLinkedList(head);
         node = newHead;
-        while(node != null) {
-        System.out.println(node.value);
-        node = node.next;
+        while (node != null) {
+            System.out.println(node.value);
+            node = node.next;
         }
-    }
-    public static Node revLinkedList(Node head) {
-        Node prev = null;
-        Node curr = head;
-        while (curr != null) {
-            var next = curr.next; // save next node
-            curr.next = prev; // reverse the link
-            prev= curr; // move prev to curr
-            curr = next; // move curr to next
-        }
-
-        return prev;
-    }
-
-    public boolean hasCycle(Node head) {
-        if (head == null || head.next == null)
-            return false;
-        var slow = head;
-        var fast = head;
-        while (fast != null && fast.next != null) {
-            slow = slow.next;
-            fast = fast.next.next;
-            if (slow == fast) {
-                return true;
-            }
-
-        }
-        return false;
-    }
-
-    public Node mergeTwoLists(Node list1, Node list2) {
-        if (list1 == null)
-            return list2;
-        if (list2 == null)
-            return list1;
-
-        Node dummy = new Node(-1);
-        var curr = dummy;
-
-        while (list1 != null && list2 != null) {
-            if (list1.value <= list2.value) {
-                curr.next = list1;
-                list1 = list1.next;
-            } else {
-                curr.next = list2;
-                list2 = list2.next;
-            }
-            curr = curr.next;
-        }
-
-        if (list1 == null)
-            curr.next = list2;
-        else
-            curr.next = list1;
-
-        return dummy.next;
     }
 }
