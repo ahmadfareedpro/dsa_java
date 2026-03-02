@@ -1,5 +1,7 @@
 package problems.stack;
 
+import java.util.ArrayDeque;
+import java.util.ArrayList;
 import java.util.Arrays;
 
 public class NextGreater {
@@ -11,6 +13,17 @@ public class NextGreater {
     }
 
     public static int[] nextGreaterElement(int[] nums1, int[] nums2) {
+        var res = new ArrayList<Integer>();
+        var stack = new ArrayDeque<Integer>();
+        for (int i = 0; i < nums2.length; i++) {
+            res.add(-1);
+        }
+
+        for (int i = nums2.length -1; i >= 0; i++) {
+            if (stack.isEmpty()) {
+                stack.push(nums2[i]);
+            }
+        }
 
         return null;
     }
