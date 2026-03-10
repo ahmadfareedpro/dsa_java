@@ -36,4 +36,14 @@ public class NextGreater {
 
         return res.stream().mapToInt(i -> i).toArray();
     }
+
+    /*
+     * create a stack, and an array with same length as main array with -1 elements
+     * start a for loop in reverse and a while loop in it
+     * which runs if the stack is not empty and stack top element is less than or equal to current element of the array
+     * keep popping stack - in while loop
+     * after while loop check if stack is not empty and add top element of the stack to our array
+     * after this if condition, push the element into the stack
+     * return our array
+     */
 }
