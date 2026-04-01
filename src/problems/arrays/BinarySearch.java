@@ -1,0 +1,26 @@
+package problems.arrays;
+
+public class BinarySearch {
+    public static void main(String[] args) {
+        System.out.println(binarySearch(new int[] { -1, 0, 3, 5, 9, 12 }, 9));
+    }
+
+    public static int binarySearch(int[] nums, int target) {
+
+        int low = nums[0];
+        int high = nums[nums.length - 1];
+        while (low != high) {
+            var mid = low + (high - low) / 2; // to avoid overflow
+            if (nums[mid] == target) {
+                return mid;
+            }
+            if (nums[mid] < target) {
+                low = mid + 1;
+            } else {
+                high = mid;
+            }
+        }
+
+        return -1;
+    }
+}

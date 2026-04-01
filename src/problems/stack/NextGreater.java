@@ -25,9 +25,6 @@ public class NextGreater {
             }
         }
 
-        var res = new ArrayList<Integer>();
-        var stack = new ArrayDeque<Integer>();
-
         for (var n : nums2) {
             res.add(-1);
         }
