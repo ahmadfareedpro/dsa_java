@@ -7,9 +7,9 @@ public class BinarySearch {
 
     public static int binarySearch(int[] nums, int target) {
 
-        int low = nums[0];
-        int high = nums[nums.length - 1];
-        while (low != high) {
+        int low = 0;
+        int high = nums.length - 1;
+        while (low <= high) {
             var mid = low + (high - low) / 2; // to avoid overflow
             if (nums[mid] == target) {
                 return mid;
