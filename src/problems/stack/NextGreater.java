@@ -1,8 +1,6 @@
 package problems.stack;
 
-import java.util.ArrayDeque;
-import java.util.ArrayList;
-import java.util.Arrays;
+import java.util.*;
 
 public class NextGreater {
     static int[] nums1 = {4, 1, 3};
@@ -13,45 +11,25 @@ public class NextGreater {
     }
 
     public static int[] nextGreaterElement(int[] nums1, int[] nums2) {
-        var res = new ArrayList<Integer>();
-        var stack = new ArrayDeque<Integer>();
-        for (int i = 0; i < nums2.length; i++) {
-            res.add(-1);
-        }
-
-        for (int i = nums2.length -1; i >= 0; i++) {
-            if (stack.isEmpty()) {
-                stack.push(nums2[i]);
+        HashMap<Integer,Integer> map=new LinkedHashMap<>();
+        Stack<Integer>st=new Stack<>();
+        int lengthNums2=nums2.length;
+        for(int i = lengthNums2 - 1; i >= 0 ; i--){
+            while(!st.isEmpty() && st.peek() < nums2[i]){
+                st.pop();
             }
+            if(st.isEmpty()) map.put(nums2[i], -1);
+            else map.put(nums2[i], st.peek());
+            st.push(nums2[i]);
         }
-
-        for (var n : nums2) {
-            res.add(-1);
+        int [] res = new int[nums1.length];
+        for(int i = 0; i < nums1.length; i++){
+            res[i] = map.get(nums1[i]);
         }
-
-        for (int i = nums2.length - 1; i >= 0; i--) {
-
-            while (!stack.isEmpty() && stack.peek() <= nums2[i]) {
-                stack.pop();
-            }
-
-            if (!stack.isEmpty()) {
-                res.set(i, stack.peek());
-            }
-
-            stack.push(nums2[i]);
-        }
-
-        return res.stream().mapToInt(i -> i).toArray();
+        return res;
     }
 
     /*
-     * create a stack, and an array with same length as main array with -1 elements
-     * start a for loop in reverse and a while loop in it
-     * which runs if the stack is not empty and stack top element is less than or equal to current element of the array
-     * keep popping stack - in while loop
-     * after while loop check if stack is not empty and add top element of the stack to our array
-     * after this if condition, push the element into the stack
-     * return our array
+     *
      */
 }
