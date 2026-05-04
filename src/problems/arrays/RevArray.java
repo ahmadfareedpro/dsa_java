@@ -1,8 +1,11 @@
 package problems.arrays;
 
+import java.util.Arrays;
+
 public class RevArray {
     public static void main(String[] args) {
-
+    int[] arr = {1,2,3,4,5};
+    revArray(arr);
     }
 
     public static void revArray(int[] arr) {
@@ -12,7 +15,12 @@ public class RevArray {
         while (left < right) {
             var temp = arr[left];
             arr[left] = arr[right];
+            arr[right] = temp;
+            left++;
+            right--;
         }
+
+        System.out.println(Arrays.toString(arr));
     }
     public int removeDuplicates(int[] nums) {
         int i = 0;
